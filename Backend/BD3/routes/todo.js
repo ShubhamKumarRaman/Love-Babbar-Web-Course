@@ -3,15 +3,16 @@ const express = require('express')
 const router = express.Router()
 
 // import controller
-const {createTodo} = require('../controllers/createTodo')
-const {getTodo, getTodoById} = require('../controllers/getTodo')
-const {updateTodo} = require('../controllers/updateTodo')
-const {deleteTodo} = require('../controllers/deleteTodo')
+const { createTodo } = require('../controllers/createTodo')
+const { getTodo, getTodoById } = require('../controllers/getTodo')
+const { updateTodo } = require('../controllers/updateTodo')
+const { deleteTodo } = require('../controllers/deleteTodo')
 
 //define API routes
+//http://localhost:3000/app/v1/getTodo/createTodo
 router.post("/createTodo", createTodo)
 
-// http://localhost:3000/app/v1/getTodo
+// http://localhost:3000/app/v1/getTodos
 router.get('/getTodos', getTodo)
 
 // http://localhost:3000/app/v1/getTodos/68d8e03d64d409a40f877d3e
