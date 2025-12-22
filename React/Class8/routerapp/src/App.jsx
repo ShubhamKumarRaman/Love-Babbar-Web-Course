@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import { NavLink, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
+import Support from './components/Support'
+import About from './components/About'
+import Labs from './components/Labs'
+import NotFound from './components/NotFound'
+import { Link } from 'react-router-dom'
+import MainHeader from './components/MainHeader'
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='App'>
+
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/support">Support</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
+          <li>
+            <NavLink to="/labs">Labs</NavLink>
+          </li>
+          <li>
+            <NavLink to="*">Other Routes</NavLink>
+          </li>
+        </ul>
+      </nav>
+
+
+      <Routes>
+        <Route path='/' element={<MainHeader />} >
+          <Route index element={<Home />} />
+          <Route path='/support' element={<Support />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/labs' element={<Labs />} />
+          <Route path='*' element={<NotFound />} />
+        </ Route>
+      </Routes>
+
+    </div>
   )
 }
 
